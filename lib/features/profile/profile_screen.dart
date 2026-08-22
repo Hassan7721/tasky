@@ -7,8 +7,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:tasky/core/service/preferences_manager.dart';
 import 'package:tasky/core/theme/theme_controller.dart';
 import 'package:tasky/core/widgets/coustom_svg_picture.dart';
-import 'package:tasky/screen/user_detailes_screen.dart';
-import 'package:tasky/screen/welcome_screen.dart';
+import 'package:tasky/features/profile/user_detailes_screen.dart';
+import 'package:tasky/features/welcome/welcome_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

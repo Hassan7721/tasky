@@ -3,7 +3,7 @@ import 'package:tasky/core/theme/theme_controller.dart';
 import 'package:tasky/core/widgets/coustom_svg_picture.dart';
 import 'package:tasky/core/widgets/custom_check_boox.dart';
 import 'package:tasky/models/task_model.dart';
-import 'package:tasky/screen/high_priority_tasks_screen.dart';
+import 'package:tasky/features/tasks/high_priority_tasks_screen.dart';
 //import 'package:tasky/task_model.dart';
 
 class HighPriorityTasksWidgets extends StatelessWidget {

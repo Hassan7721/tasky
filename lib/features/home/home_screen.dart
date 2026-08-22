@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:tasky/core/service/preferences_manager.dart';
 import 'package:tasky/core/widgets/coustom_svg_picture.dart';
 import 'package:tasky/models/task_model.dart';
-import 'package:tasky/screen/add_task_screen.dart';
+import 'package:tasky/features/add_task/add_task_screen.dart';
 //import 'package:tasky/task_model.dart';
 import 'package:tasky/widgets/achieved_tasks_widgets.dart';
 import 'package:tasky/widgets/high_priority_tasks_widgets.dart';
