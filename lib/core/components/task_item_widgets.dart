@@ -7,7 +7,7 @@ import 'package:tasky/core/widgets/coustm_text_form_field.dart';
 import 'package:tasky/core/widgets/custom_check_boox.dart';
 import 'package:tasky/models/task_model.dart';
 
-import '../core/enums/task_item_actions_enum.dart';
+import '../enums/task_item_actions_enum.dart';
 
 class TaskItemWidgets extends StatelessWidget {
   const TaskItemWidgets({

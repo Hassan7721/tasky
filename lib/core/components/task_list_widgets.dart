@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 //import 'package:tasky/core/theme/theme_controller.dart';
 //import 'package:tasky/core/widgets/custom_check_boox.dart';
 import 'package:tasky/models/task_model.dart';
-import 'package:tasky/widgets/task_item_widgets.dart';
+import 'package:tasky/core/components/task_item_widgets.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:tasky/task_model.dart';
 
