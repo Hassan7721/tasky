@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasky/core/components/constants/storage_key.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasky/core/service/preferences_manager.dart';
 import 'package:tasky/core/widgets/coustm_text_form_field.dart';
@@ -71,7 +72,7 @@ class _UserDetailesScreenState extends State<UserDetailesScreen> {
               ElevatedButton(
                 onPressed: () async {
                   if (_key.currentState!.validate()) {
-                    await PreferencesManager().setString("username",userNameController.value.text);
+                    await PreferencesManager().setString(StorageKey.username,userNameController.value.text);
                     await PreferencesManager().setString("motivation_quote",motivationQuoteController.value.text);
                  
                     Navigator.pop(context, true);

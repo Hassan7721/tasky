@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tasky/core/components/constants/storage_key.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasky/core/service/preferences_manager.dart';
 import 'package:tasky/core/theme/dark_theme.dart';
@@ -17,7 +18,7 @@ void main() async {
   await PreferencesManager().init();
   ThemeController().init();
 
-  String? username = PreferencesManager().getString("username");
+  String? username = PreferencesManager().getString(StorageKey.username);
   //  final pref = await SharedPreferences.getInstance();
   //  String? username = pref.getString("username");
 

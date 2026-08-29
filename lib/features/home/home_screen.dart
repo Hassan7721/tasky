@@ -3,6 +3,7 @@ import 'dart:io';
 //import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:tasky/core/components/constants/storage_key.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasky/core/service/preferences_manager.dart';
 import 'package:tasky/core/widgets/coustom_svg_picture.dart';
@@ -40,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _loadusername() async {
     setState(() {
-      username = PreferencesManager().getString("username");
+      username = PreferencesManager().getString(StorageKey.username);
       userImagePath = PreferencesManager().getString("user_image");
     });
   }
