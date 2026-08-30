@@ -41,7 +41,7 @@ class HomeController  with ChangeNotifier{
   
  
 
-    final finalTask = PreferencesManager().getString("tasks");
+    final finalTask = PreferencesManager().getString(StorageKey.tasks);
 
     if (finalTask != null) {
       final taskAfterDecode = jsonDecode(finalTask) as List<dynamic>;
@@ -73,7 +73,7 @@ class HomeController  with ChangeNotifier{
     notifyListeners();
 
     final updatedTask = tasks.map((element) => element.toJson()).toList();
-    PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+    PreferencesManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
   }
 
   delteTask(int? id) async {
@@ -84,7 +84,7 @@ class HomeController  with ChangeNotifier{
     notifyListeners();
     // todo shared method
     final updatedTask = tasks.map((element) => element.toJson()).toList();
-    PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+    PreferencesManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
     notifyListeners();
   }
   

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:tasky/core/components/constants/storage_key.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasky/core/service/preferences_manager.dart';
 import 'package:tasky/models/task_model.dart';
@@ -29,7 +30,7 @@ class _CompletedTasksScreenState extends State<CompletedTasksScreen> {
     setState(() {
       isLoadig = true;
     });
-    final finalTask = PreferencesManager().getString("tasks");
+    final finalTask = PreferencesManager().getString(StorageKey.tasks);
   
 
     if (finalTask != null) {
@@ -69,7 +70,7 @@ class _CompletedTasksScreenState extends State<CompletedTasksScreen> {
       final updatedTask = completTask
           .map((element) => element.toJson())
           .toList();
-      PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+      PreferencesManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
     }
   }
    
@@ -97,7 +98,7 @@ class _CompletedTasksScreenState extends State<CompletedTasksScreen> {
                           setState(() {
                           completTask[index!].isDone = value ?? false;
                         });
-                         final allDate = PreferencesManager().getString("tasks");
+                         final allDate = PreferencesManager().getString(StorageKey.tasks);
                        
                      
                         if (allDate != null) {
@@ -110,7 +111,7 @@ class _CompletedTasksScreenState extends State<CompletedTasksScreen> {
                             (e) => e.id == completTask[index!].id,
                           );
                           allDateList[newIndex] = completTask[index!];
-                          await PreferencesManager().setString("tasks",jsonEncode(allDateList));
+                          await PreferencesManager().setString(StorageKey.tasks,jsonEncode(allDateList));
                          
                           _loadTask();
                         }

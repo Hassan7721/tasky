@@ -174,7 +174,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   onTap: () async {
                     PreferencesManager().remove(StorageKey.username);
                     PreferencesManager().remove(StorageKey.motivationQuote);
-                    PreferencesManager().remove("tasks");
+                    PreferencesManager().remove(StorageKey.tasks);
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:tasky/core/components/constants/storage_key.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tasky/core/service/preferences_manager.dart';
 import 'package:tasky/models/task_model.dart';
@@ -65,7 +66,7 @@ class _TasksScreenState extends State<TasksScreen> {
       final updatedTask = todoTasks
           .map((element) => element.toJson())
           .toList();
-      PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+      PreferencesManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
     }
   }
 
@@ -112,7 +113,7 @@ class _TasksScreenState extends State<TasksScreen> {
 
                         allDateList[newIndex] = todoTasks[index!];
 
-                         PreferencesManager().setString("tasks", jsonEncode(allDateList));
+                         PreferencesManager().setString(StorageKey.tasks, jsonEncode(allDateList));
 
                         _loadTask();
                       }

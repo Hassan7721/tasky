@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tasky/core/components/constants/storage_key.dart';
 import 'package:tasky/core/service/preferences_manager.dart';
 import 'package:tasky/models/task_model.dart';
 //import 'package:tasky/task_model.dart';
@@ -70,7 +71,7 @@ class _HighPriorityTasksScreenState extends State<HighPriorityTasksScreen> {
       final updatedTask = highPriorityTasks
           .map((element) => element.toJson())
           .toList();
-      PreferencesManager().setString("tasks", jsonEncode(updatedTask));
+      PreferencesManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
     }
   }
 
@@ -88,7 +89,7 @@ class _HighPriorityTasksScreenState extends State<HighPriorityTasksScreen> {
                   setState(() {
                     highPriorityTasks[index!].isDone = value ?? false;
                   });
-                  final allDate = PreferencesManager().getString("tasks");
+                  final allDate = PreferencesManager().getString(StorageKey.tasks);
                   //  final pref = await SharedPreferences.getInstance();
                   // final allDate = pref.getString('tasks');
 
@@ -103,7 +104,7 @@ class _HighPriorityTasksScreenState extends State<HighPriorityTasksScreen> {
 
                     allDateList[newIndex] = highPriorityTasks[index!];
                     await PreferencesManager().setString(
-                      "tasks",
+                      StorageKey.tasks,
                       jsonEncode(allDateList),
                     );
                     // pref.setString("tasks", jsonEncode(allDateList));
