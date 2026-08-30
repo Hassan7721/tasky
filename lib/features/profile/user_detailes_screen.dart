@@ -73,7 +73,7 @@ class _UserDetailesScreenState extends State<UserDetailesScreen> {
                 onPressed: () async {
                   if (_key.currentState!.validate()) {
                     await PreferencesManager().setString(StorageKey.username,userNameController.value.text);
-                    await PreferencesManager().setString("motivation_quote",motivationQuoteController.value.text);
+                    await PreferencesManager().setString(StorageKey.motivationQuote,motivationQuoteController.value.text);
                  
                     Navigator.pop(context, true);
                   }
