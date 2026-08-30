@@ -35,9 +35,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       username = PreferencesManager().getString(StorageKey.username) ?? '';
       motivationQuote =
-          PreferencesManager().getString("motivation_quote") ??
+          PreferencesManager().getString(StorageKey.motivationQuote) ??
           "One task at a time. One step closer.";
-      userImagePath = PreferencesManager().getString("user_image");
+      userImagePath = PreferencesManager().getString(StorageKey.userImage);
 
       isLoadig = false;
     });
@@ -173,7 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   contentPadding: EdgeInsets.zero,
                   onTap: () async {
                     PreferencesManager().remove(StorageKey.username);
-                    PreferencesManager().remove("motivation_quote");
+                    PreferencesManager().remove(StorageKey.motivationQuote);
                     PreferencesManager().remove("tasks");
                     Navigator.pushAndRemoveUntil(
                       context,
@@ -200,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final appDir = await getApplicationDocumentsDirectory();
 
     final newFile = await File(file.path).copy('${appDir.path}/${file.name}');
-    PreferencesManager().setString('user_image', newFile.path);
+    PreferencesManager().setString(StorageKey.userImage, newFile.path);
   }
 }
 
