@@ -22,13 +22,13 @@ class HomeController  with ChangeNotifier{
 
   init(){
 
-    loadusername();
+    loadUserDate();
     loadTask();
   }
 
   
 
-    void loadusername() async {
+    void loadUserDate() async {
    
       username = PreferencesManager().getString(StorageKey.username);
       userImagePath = PreferencesManager().getString(StorageKey.userImage);
@@ -76,7 +76,7 @@ class HomeController  with ChangeNotifier{
     PreferencesManager().setString(StorageKey.tasks, jsonEncode(updatedTask));
   }
 
-  delteTask(int? id) async {
+  deleteTask(int? id) async {
     if (id == null) return;
     
       tasks.removeWhere((task) => task.id == id);
