@@ -4,6 +4,7 @@ import 'package:tasky/core/theme/theme_controller.dart';
 import 'package:tasky/core/widgets/coustom_svg_picture.dart';
 import 'package:tasky/core/widgets/custom_check_boox.dart';
 import 'package:tasky/features/home/home_controller.dart';
+import 'package:tasky/features/tasks/controller/tasks_controller.dart';
 import 'package:tasky/features/tasks/high_priority_tasks_screen.dart';
 //import 'package:tasky/task_model.dart';
 
@@ -12,9 +13,9 @@ class HighPriorityTasksWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HomeController>(
+    return Consumer<TasksController>(
       builder:
-          (BuildContext context, HomeController controller, Widget? child) {
+          (BuildContext context, TasksController controller, Widget? child) {
             final tasksList = controller.tasks;
             return Container(
               //padding: EdgeInsets.only(top: 16),
@@ -65,7 +66,7 @@ class HighPriorityTasksWidgets extends StatelessWidget {
                                     final index = tasksList.indexWhere(
                                       (e) => e.id == task.id,
                                     );
-                                    controller.doneTask(value,index);
+                                    controller.doneHighPriorityTask(value,index);
                                    
                                   },
                                 ),
@@ -99,7 +100,7 @@ class HighPriorityTasksWidgets extends StatelessWidget {
                           },
                         ),
                       );
-                        controller.loadTask();
+                        controller.init();
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
