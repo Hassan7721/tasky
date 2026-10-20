@@ -18,11 +18,11 @@ class HighPriorityTasksScreen extends StatelessWidget {
         child: controller.isLoading
             ? const Center(child: CircularProgressIndicator())
             : Consumer<TasksController>(
-                builder: (BuildContext context, value, Widget? child) {
+                builder: (BuildContext context, valueController, Widget? child) {
                   return TaskListWidgets(
-                    tasks: value.highPriorityTasks,
+                    tasks: valueController.highPriorityTasks,
                     onTap: (value, index) async {
-                      controller.doneHighPriorityTask(value, index);
+                      controller.doneTask(value, valueController.highPriorityTasks[index!].id);
                     },
                     emptyMessage: "No Task Found",
                     onDelete: (int? id) {

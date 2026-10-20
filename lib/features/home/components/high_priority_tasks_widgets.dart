@@ -62,11 +62,8 @@ class HighPriorityTasksWidgets extends StatelessWidget {
                               children: [
                                 CustomCheckBoox(
                                   value: task.isDone,
-                                  onChanged: (bool? value) {
-                                    final index = tasksList.indexWhere(
-                                      (e) => e.id == task.id,
-                                    );
-                                    controller.doneHighPriorityTask(value,index);
+                                  onChanged: (bool? value) {                                
+                                    controller.doneTask(value,task.id);
                                    
                                   },
                                 ),

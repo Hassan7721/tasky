@@ -25,11 +25,11 @@ class TodoTasksScreen extends StatelessWidget {
                 child: controller.isLoading
                     ? Center(child: CircularProgressIndicator())
                     : Consumer<TasksController>(
-                        builder: (BuildContext context, value, Widget? child) {
+                        builder: (BuildContext context, valueController, Widget? child) {
                           return TaskListWidgets(
-                            tasks: value.todoTasks,
+                            tasks: valueController.todoTasks,
                             onTap: (value, index) async {
-                              controller.doneTask(value, index);
+                              controller.doneTask(value,valueController.todoTasks[index!].id);
                             },
                             emptyMessage: 'No Task Found',
                             onDelete: (int? id) {

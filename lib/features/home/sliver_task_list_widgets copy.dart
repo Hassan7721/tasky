@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tasky/features/home/home_controller.dart';
 import 'package:tasky/core/components/task_item_widgets.dart';
 import 'package:tasky/features/tasks/controller/tasks_controller.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
@@ -44,7 +43,7 @@ class SliverTaskListWidgets extends StatelessWidget {
                     return TaskItemWidgets(
                       model: tasksList[index],
                       onChanged: (bool? value) {
-                        controller.doneTask(value,index);
+                        controller.doneTask(value,tasksList[index].id);
                        
                       },
                       onDelete: (int? id) {
