@@ -44,9 +44,14 @@ class PreferencesManager {
    List<String>? getStringList (String key){
     return _preferences.getStringList(key);
   }
-  String? getString(String key) {
+String? getString(String key) {
+  try {
     return _preferences.getString(key);
+  } catch (_) {
+    _preferences.remove(key);
+    return null;
   }
+}
   // delete
   remove(String key) async{
     await _preferences.remove(key);

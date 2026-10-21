@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -28,7 +27,7 @@ class AddTaskController extends ChangeNotifier {
 
       // listTasks.length = 1 -> 1 + 1
       TaskModel model = TaskModel(
-        id: listTasks.length + 1,
+        id: DateTime.now().millisecondsSinceEpoch,
         taskName: taskNameController.text,
         taskDescription: taskDescriptionController.text,
         isHighPriority: isHighPriority,

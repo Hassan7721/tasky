@@ -89,11 +89,10 @@ class TaskItemWidgets extends StatelessWidget {
                   await _showAlertDialog(context);
 
                 case TaskItemActionsEnum.edit:
-                final result=  await _showButtonSheet(context, model);
-                if(result==true){
-                      onEdit();
-                }
-                
+                  final result = await _showButtonSheet(context, model);
+                  if (result == true) {
+                    onEdit();
+                  }
               }
             },
             itemBuilder: (context) => [
@@ -141,7 +140,7 @@ class TaskItemWidgets extends StatelessWidget {
     );
   }
 
-  Future<bool?>  _showButtonSheet(BuildContext context, TaskModel model) {
+  Future<bool?> _showButtonSheet(BuildContext context, TaskModel model) {
     TextEditingController taskNameController = TextEditingController(
       text: model.taskName,
     );
@@ -152,7 +151,7 @@ class TaskItemWidgets extends StatelessWidget {
     bool isHighPriority = model.isHighPriority;
     return showModalBottomSheet<bool>(
       context: context,
-     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       builder: (context) {
         return StatefulBuilder(
           builder: (BuildContext context, void Function(void Function()) setState) {
@@ -197,7 +196,7 @@ class TaskItemWidgets extends StatelessWidget {
                       children: [
                         Text(
                           "High Priority ",
-                          style:Theme.of(context).textTheme.titleMedium,
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                         Switch(
                           value: isHighPriority,
@@ -218,28 +217,32 @@ class TaskItemWidgets extends StatelessWidget {
                       onPressed: () async {
                         //   print(_key.currentState);
                         if (key.currentState?.validate() ?? false) {
-                           final taskjson = PreferencesManager().getString(StorageKey.tasks);
+                          final taskjson = PreferencesManager().getString(
+                            StorageKey.tasks,
+                          );
 
-                             List<dynamic> listTasks = [];
-                            if (taskjson != null) {
-                              listTasks = jsonDecode(taskjson);
-                            }
-                            TaskModel newModel = TaskModel(
-                              id: model.id + 1,
-                              taskName: taskNameController.text,
-                              taskDescription: taskDesceiptionController.text,
-                              isHighPriority: isHighPriority,
-                              isDone: model.isDone,
-                            );
+                          List<dynamic> listTasks = [];
+                          if (taskjson != null) {
+                            listTasks = jsonDecode(taskjson);
+                          }
+                          TaskModel newModel = TaskModel(
+                            id: model.id,
+                            taskName: taskNameController.text,
+                            taskDescription: taskDesceiptionController.text,
+                            isHighPriority: isHighPriority,
+                            isDone: model.isDone,
+                          );
 
-                            final item=listTasks.firstWhere(
-                              (e)=> e['id']==model.id,
-                              
-                            );
+                          final int index = listTasks.indexWhere(
+                            (e) => e['id'] == model.id,
+                          );
 
-                          final int index=listTasks.indexOf(item);
+                          if (index == -1) {
+                            Navigator.of(context).pop(false);
+                            return;
+                          }
 
-                          listTasks[index]=newModel;
+                          listTasks[index] = newModel.toJson();
 
                           //   final task = <String, dynamic>{
                           //     "taskName": taskNameController.text,
@@ -249,11 +252,13 @@ class TaskItemWidgets extends StatelessWidget {
 
                           //   listTasks.add(model.toJson());
 
-                            final taskEncode = jsonEncode(listTasks);
-                           await PreferencesManager().setString(StorageKey.tasks, taskEncode);
+                          final taskEncode = jsonEncode(listTasks);
+                          await PreferencesManager().setString(
+                            StorageKey.tasks,
+                            taskEncode,
+                          );
 
-                       
-                             Navigator.of(context).pop(true);
+                          Navigator.of(context).pop(true);
                         }
                       },
                       label: Text("Edit Task"),

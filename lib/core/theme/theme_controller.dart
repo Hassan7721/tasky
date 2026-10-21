@@ -19,7 +19,7 @@ static final  ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.d
       await PreferencesManager().setBool(StorageKey.theme, false);
     }else{
       themeNotifier.value=ThemeMode.dark;
-     await PreferencesManager().setBool(StorageKey.tasks, true);
+     await PreferencesManager().setBool(StorageKey.theme, true);
     }
 
   }
